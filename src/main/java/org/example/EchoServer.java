@@ -19,16 +19,15 @@ public class EchoServer {
 
     public static void main(String[] args) {
 
-        logger.info("app started");
+        logger.info("Application started");
         getEnvironmentVariables();
 
         Server server = new Server(Integer.parseInt(properties.getProperty("ECHOSERVER_PORT")));
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        server.setHandler(context);
-
         context.addServlet(String.valueOf(EchoServlet.class), "/echo");
+        server.setHandler(context);
 
         try {
             server.start();
