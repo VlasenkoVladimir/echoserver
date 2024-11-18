@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.eclipse.jetty', name: 'jetty-server', version: '12.0.15'
+    implementation group: 'org.eclipse.jetty', name: 'jetty-server', version: '11.0.24'
     implementation group: 'org.eclipse.jetty.websocket', name: 'websocket-jetty-server', version: '11.0.24'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
 

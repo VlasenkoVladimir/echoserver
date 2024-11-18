@@ -26,7 +26,7 @@ public class EchoServer {
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        context.addServlet(String.valueOf(EchoServlet.class), "/echo");
+        context.addServlet(EchoServlet.class, "/echo");
         server.setHandler(context);
 
         try {
