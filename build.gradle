@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.eclipse.jetty', name: 'jetty-server', version: '12.0.15'
+    implementation group: 'org.eclipse.jetty.websocket', name: 'websocket-jetty-server', version: '11.0.24'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
+
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.16'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "org.example.EchoServer"
+    }
+    from {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
