@@ -23,4 +23,4 @@ APP_CONTAINER_PORTS=8081:8081
 docker build --no-cache --tag echoserverapp .
 
 # For start container
-docker run --env-file=.env -i echoserverapp
+docker run --env-file=.env -p 8081:8081 -d -i echoserverapp

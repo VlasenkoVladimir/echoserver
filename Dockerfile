@@ -14,19 +14,17 @@ RUN set -eux \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
         curl gnupg software-properties-common
 
-ENV LANG=C.UTF-8
-ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
-
 ARG varFile=.env
 ARG jarFile=build/libs/echoServer-1.0-SNAPSHOT.jar
 
-RUN mkdir /opt/echoapp
+ENV LANG=C.UTF-8
+ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
+ENV env_file=${varFile}
+
 WORKDIR /opt/echoapp
 
 ADD ${jarFile} ${varFile} /opt/echoapp/
 
-EXPOSE 9090
-
-ENV env_file=${varFile}
+EXPOSE 8081
 
 ENTRYPOINT ["java", "-jar", "/opt/echoapp/echoServer-1.0-SNAPSHOT.jar"]
