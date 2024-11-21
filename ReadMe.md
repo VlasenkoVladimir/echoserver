@@ -22,5 +22,5 @@ APP_CONTAINER_PORTS=8081:8081
 # Make container from project root directory
 docker build --no-cache --tag echoserverapp .
 
-# For start in container
+# For start container
 docker run --env-file=.env -i echoserverapp
